@@ -8,7 +8,7 @@
 </head>
 <body>
 	<% String userName = (String)request.getSession().getAttribute("userName"); %>
-	<p>Hello, <%= userName %>!</p>
+	<p>Hello, <%= userName %>!!!</p>
 	<% 
 		// getSession(false) - don't create if it doesn't exist
 		HttpSession newSession = request.getSession(false);
