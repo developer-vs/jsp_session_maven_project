@@ -7,6 +7,12 @@
 <title>Login</title>
 </head>
 <body>
+	<%
+		Object validatorResponse = request.getAttribute("validator_response");
+		if(validatorResponse != null) {
+			out.println("<br><p style=\"color:red;\">" + validatorResponse + "</p>");
+		}
+	%>
 	<form action="<%= request.getContextPath()%>/SiteController" method="post">
 		<label for="userName">User Name *</label><br>
 		<input type="text" class="form-control" name="userName" required><br>

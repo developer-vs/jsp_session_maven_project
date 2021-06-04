@@ -38,14 +38,17 @@ public class SiteController extends HttpServlet {
 			request.getSession().invalidate();
 			
 			// create - true to create a new session for this request if necessary; f
-			// false to return null if there's no current session
+			// we use "false" to return null if there's no current session
 			HttpSession session = request.getSession(true);
 			session.setMaxInactiveInterval(10); // 10 sec
 			session.setAttribute("userName", userName);
 			response.sendRedirect("member-area.jsp");
 		}
 		else {
-			response.sendRedirect("index.jsp");
+			String wrongCredentials = "Wrong credentials";
+			request.setAttribute("validator_response", wrongCredentials);
+			RequestDispatcher reqDispatcher = request.getRequestDispatcher("index.jsp");
+			reqDispatcher.forward(request, response);
 		}
 	}
 
