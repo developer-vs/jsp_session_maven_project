@@ -7,6 +7,9 @@
 <title>Member Area</title>
 </head>
 <body>
+	<%!
+		// static int timeout = 0;
+	%>
 	<%
 	    String userName = "guest";
 		// getSession(false) - don't create if it doesn't exist
@@ -21,7 +24,10 @@
 	<% 	
 		int timeout = newSession.getMaxInactiveInterval();		
 		out.print(timeout + " sec left");
-		response.setHeader("Refresh", timeout + "; URL = index.jsp");		
+	%>
+		<p>${userName}, after <%= timeout %> seconds the page will be redirected to the index.jsp </p>
+	<% 
+		response.setHeader("Refresh", timeout + "; URL = index.jsp");	
 	%>
 </body>
 </html>
